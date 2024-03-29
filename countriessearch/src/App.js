@@ -11,7 +11,6 @@ function App() {
 
   const handleInput = (e)=>{
     setSearchInput(e.target.value);
-    setCountries(filteredData);
   }
 
   const getCountriesData = async()=>{
@@ -40,7 +39,7 @@ function App() {
       onChange={handleInput} />
       </div>
     <div className={styles.container}>
-        {countries.map((country)=>{
+        {filteredData.map((country)=>{
         return(
         <div key={country.cca3} className={styles.countryCard}>
           <img className={styles.image} src={country.flags.png} alt={`Flag of ${country.name.common}`} />
