@@ -50,7 +50,7 @@ function App() {
               return(
               <div key={country.cca3} className="countryCard">
                 <img className="image" src={country.flags.png} alt={`Flag of ${country.name.common}`} />
-                <h1 className="name">{country.name.common}</h1>
+                <h2 className="name">{country.name.common}</h2>
               </div>
               )
             }) :
@@ -58,7 +58,7 @@ function App() {
         return(
         <div key={country.cca3} className="countryCard">
           <img className="image" src={country.flags.png} alt={`Flag of ${country.name.common}`} />
-          <h1 className="name">{country.name.common}</h1>
+          <h2 className="name">{country.name.common}</h2>
         </div>
         )
       })}
