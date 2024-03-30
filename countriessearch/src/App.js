@@ -5,7 +5,7 @@ import './App.css';
 function App() {
   const [countries, setCountries] = useState([]);
   const [searchinput, setSearchInput] = useState("");
-  const [filtered, setFiltered] = useState([]);
+  // const [filtered, setFiltered] = useState([]);
 
 
   const handleInput = (e)=>{
@@ -19,7 +19,7 @@ function App() {
         let res = await fetch(`https://restcountries.com/v3.1/all`);
         let data = await res.json();
         setCountries(data);
-        console.log(data);
+        // console.log(data);
       }
       catch(err){
         console.log("Error fetching data: ", err);
@@ -28,12 +28,16 @@ function App() {
     getCountriesData();
   },[]);
 
-  useEffect(() => {
-    const data = countries.filter((country)=>
+  const filtered = countries.filter((country)=>
   {return country.name.common.toLowerCase().includes(searchinput.toLowerCase());
    })
-    setFiltered(data);
-  }, [searchinput]);
+
+  // useEffect(() => {
+  //   const filtered = countries.filter((country)=>
+  // {return country.name.common.toLowerCase().includes(searchinput.toLowerCase());
+  //  })
+  //   // setFiltered(data);
+  // }, [searchinput]);
 
 
   return (
@@ -45,21 +49,12 @@ function App() {
       onChange={(e) => handleInput(e)} />
       </div>
     <div className="container">
-        {searchinput === "" ?
-            countries.map((country)=>{
-              return(
+           { filtered.map((country)=>{
+            return(
               <div key={country.cca3} className="countryCard">
                 <img className="image" src={country.flags.png} alt={`Flag of ${country.name.common}`} />
                 <h2 className="name">{country.name.common}</h2>
               </div>
-              )
-            }) :
-            filtered.map((country)=>{
-        return(
-        <div key={country.cca3} className="countryCard">
-          <img className="image" src={country.flags.png} alt={`Flag of ${country.name.common}`} />
-          <h2 className="name">{country.name.common}</h2>
-        </div>
         )
       })}
     </div>
