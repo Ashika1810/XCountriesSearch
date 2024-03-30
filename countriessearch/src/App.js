@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import styles from './App.module.css';
+// import styles from './App.module.css';
+import './App.css';
 
 function App() {
   const [countries, setCountries] = useState([]);
@@ -32,18 +33,18 @@ function App() {
 
   return (
     <div>
-      <div className={styles.input}>
-      <input type="text" className={styles.field} 
+      <div className="input">
+      <input type="text" className="field" 
       value={searchinput}
       placeholder='Search for countries...'
       onChange={handleInput} />
       </div>
-    <div className={styles.container}>
+    <div className="container">
         {filteredData.map((country)=>{
         return(
-        <div key={country.cca3} className={styles.countryCard}>
-          <img className={styles.image} src={country.flags.png} alt={`Flag of ${country.name.common}`} />
-          <h1 className={styles.name}>{country.name.common}</h1>
+        <div key={country.cca3} className="countryCard">
+          <img className="image" src={country.flags.png} alt={`Flag of ${country.name.common}`} />
+          <h1 className="name">{country.name.common}</h1>
         </div>
         )
       })}
